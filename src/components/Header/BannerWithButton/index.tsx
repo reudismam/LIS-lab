@@ -1,26 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import BannerWithButton from '../BannerWithButton';
+import inicioImg from '../../../assets/images/Home/inicio.svg';
+import TopBar from '../TopBar';
 
-const MainHeader = styled.header`
-    height: 450px;
-    background-color: var(--primaria);
-    width: 100vw;
-
-    .banner {
+var Banner = styled.div`
         width: 100%;
         display: flex; 
         align-items: center;
         justify-content: center;
         flex-direction: column;
         margin-top: 10px;
-    }
 
     .inicio-image {
         width: 200px;
     }
 
-    .banner h1 {
+    h1 {
         width: 350px;
         color: var(--fundo);
         font-family: 'Roboto', sans-serif;
@@ -29,7 +24,7 @@ const MainHeader = styled.header`
         line-height: 1.6;
     }
 
-    .banner h2 {
+    h2 {
         font-family: 'Roboto', sans-serif;
         font-size: 16px;
         color: var(--fundo);
@@ -38,14 +33,14 @@ const MainHeader = styled.header`
         margin-bottom: 10px;
     }
 
-    .banner .message {
+    .message {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         margin-left: 100px;
     }
 
-    .banner .message button {
+    .message button {
         background-color: var(--primaria);
         border: 1px solid var(--cinza);
         border-radius: 0.8rem;
@@ -55,17 +50,31 @@ const MainHeader = styled.header`
         color: var(--fundo);
     }
 
-    .banner .button {
+    .button {
         display: inline-block;
         margin-top: 10px;
     }
-`;
+`
 
-export default function Header() {
+export default function BannerWithButton() {
     return (
-        <MainHeader>
-            <BannerWithButton />
-        </MainHeader>
+        <>
+        <TopBar />
+        <Banner>
+            <img
+                src={inicioImg}
+                alt="Plataforma de estudos"
+                className="inicio-image" />
+            <div className="message">
+                <h1>Somos apaixonados por inovação e fazemos disso nosso trabalho</h1>
+                <h2>Insira seus dados cadastrais nos campos abaixo</h2>
+                <div className="button">
+                    <button>
+                        Projetos
+                        </button>
+                </div>
+            </div>
+        </Banner>
+        </>
     );
 }
-
