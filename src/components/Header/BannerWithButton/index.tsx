@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import inicioImg from '../../../assets/images/Home/inicio.svg';
+import { Link } from 'react-router-dom';
 
 var Banner = styled.div`
         width: 100%;
+        /*height: 100%;*/
         display: flex; 
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        margin-top: 10px;
 
     .image {
         width: 200px;
@@ -21,6 +21,8 @@ var Banner = styled.div`
         font-size: 20px;
         margin-top: 20px;
         line-height: 1.6;
+        display: flex;
+        justify-content: center;
     }
 
     h2 {
@@ -30,13 +32,18 @@ var Banner = styled.div`
         font-weight: normal;
         margin-top: 10px;
         margin-bottom: 10px;
+        width: 350px;
+        line-height: 1.6;
+        display: flex;
+        justify-content: center;
     }
 
     .message {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        margin-left: 100px;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     .message button {
@@ -56,6 +63,8 @@ var Banner = styled.div`
 
     @media(min-width: 768px) {
         display: grid;
+        margin-top: 10px;
+        margin-bottom: 10px;
         grid-template-columns: 3fr 1fr 1fr;
         grid-template-areas: 
             "message message message figure figure";
@@ -64,38 +73,66 @@ var Banner = styled.div`
             grid-area: figure;
             align-self: start;
             margin-right: 50px;
-            width: 350px;
+            width: 450px;
             
         }
 
         .message {
+            align-items: center;
+            display: grid;
             grid-area: message;
             justify-content: center;
-            display: grid;
+            margin-bottom: 50px;
+            margin-left: 100px;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 26px;
+            width: 500px;
             justify-content: start;
-            align-items: center;
+        }
+
+        h2 {
+            justify-content: start;
         }
     }
 `
 
-export default function BannerWithButton() {
+export interface BannerProps {
+    image?: string;
+    imageAlt?: string;
+    title: string;
+    description?: string;
+    buttonLink?: string;
+    buttonText?: string;
+
+}
+
+
+
+const BannerWithButton: React.FC<BannerProps> = (props) => {
     return (
         <>
         <Banner>
-            <img
-                src={inicioImg}
-                alt="Plataforma de estudos"
-                className="image" />
+            {props.image && <img
+                src={props.image}
+                alt={props.imageAlt}
+                className="image" />}
             <div className="message">
-                <h1>Somos apaixonados por inovação e fazemos disso nosso trabalho</h1>
-                <h2>Insira seus dados cadastrais nos campos abaixo</h2>
-                <div className="button">
+                <h1>{props.title}</h1>
+                {props.description && <h2>{props.description}</h2>}
+                {props.buttonLink && <div className="button">
+                    <Link to={props.buttonLink}>
                     <button>
-                        Projetos
-                        </button>
-                </div>
+                        {props.buttonText}
+                    </button>
+                    </Link>
+                </div>}
             </div>
         </Banner>
         </>
     );
 }
+
+export default BannerWithButton;
