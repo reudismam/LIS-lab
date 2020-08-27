@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import inicioImg from '../../../assets/images/Home/inicio.svg';
-import TopBar from '../TopBar';
 
 var Banner = styled.div`
         width: 100%;
@@ -11,7 +10,7 @@ var Banner = styled.div`
         flex-direction: column;
         margin-top: 10px;
 
-    .inicio-image {
+    .image {
         width: 200px;
     }
 
@@ -54,17 +53,39 @@ var Banner = styled.div`
         display: inline-block;
         margin-top: 10px;
     }
+
+    @media(min-width: 768px) {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+        grid-template-areas: 
+            "message message message figure figure";
+        
+        .image {
+            grid-area: figure;
+            align-self: start;
+            margin-right: 50px;
+            width: 350px;
+            
+        }
+
+        .message {
+            grid-area: message;
+            justify-content: center;
+            display: grid;
+            justify-content: start;
+            align-items: center;
+        }
+    }
 `
 
 export default function BannerWithButton() {
     return (
         <>
-        <TopBar />
         <Banner>
             <img
                 src={inicioImg}
                 alt="Plataforma de estudos"
-                className="inicio-image" />
+                className="image" />
             <div className="message">
                 <h1>Somos apaixonados por inovação e fazemos disso nosso trabalho</h1>
                 <h2>Insira seus dados cadastrais nos campos abaixo</h2>

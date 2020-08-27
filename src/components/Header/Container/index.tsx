@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BannerWithButton from '../BannerWithButton';
+import TopBar from '../TopBar';
 
 const MainHeader = styled.header`
     height: 450px;
@@ -64,6 +65,7 @@ const MainHeader = styled.header`
 export default function Header() {
     return (
         <MainHeader>
+            <TopBar />
             <BannerWithButton />
         </MainHeader>
     );
