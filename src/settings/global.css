@@ -1,3 +1,24 @@
+:root {
+    --primaria: #2B4CB8;
+    --primaria-dark: #0C3197;
+    --primaria-light: #2F80ED;
+
+    --secundaria: #D81B60;
+    --secundaria-dark: #A00037;
+    --secundaria-light: #FF5C8D;
+
+    --branco: #FFFFFF;
+    --cinza: #828282;
+
+    --grande: 26px;
+    --medio: 16px;
+    --pequena: 14px;
+
+    font-size: 62.5%;
+
+    /* 2rem */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,5 +30,5 @@ html, body, #root {
 }
 
 body {
-    background-color: #FFFFFF;
+    background-color: var(--branco);
 }
