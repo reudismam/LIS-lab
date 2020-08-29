@@ -9,12 +9,16 @@ interface MenuIconProps {
   open?: boolean;
 }
 
+const MenuContainer = styled.div`
+  flex: 1;
+  margin-left: 1.6rem;
+  margin-right: 1.6rem;
+`
+
 const Menus = styled.nav`
   display: flex;
   align-items: 'center';
   justify-content: space-between;
-  width: 90vw;
-  margin-left: 1.6rem;
 
   li {
     padding-right: 1.6rem;
@@ -30,7 +34,7 @@ const Menus = styled.nav`
     right: 0;
     top: 0;
     transform: ${ (props: MenuIconProps) => props.open ? 'translateX(0)' : 'translateX(100%)'};
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s;
     width: 200px;
   }
 `;
@@ -39,7 +43,7 @@ const Menu = () => {
   const [open, setOpen] = useState(false)
   
   return (
-    <div>
+    <MenuContainer>
       <MenuIcon open={open} onClick={() => setOpen(!open)}>
         {!open && <FiMenu />}
       </MenuIcon>
@@ -67,7 +71,7 @@ const Menu = () => {
             <li>Criar conta</li>
         </MenuList>
       </Menus>
-    </div>
+      </MenuContainer>
   )
 }
 

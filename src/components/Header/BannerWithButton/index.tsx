@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 var Banner = styled.div`
-        width: 100%;
-        /*height: 100%;*/
+        /*width: 100%;*/
         display: flex; 
         align-items: center;
         justify-content: center;
@@ -22,7 +21,7 @@ var Banner = styled.div`
         margin-top: 20px;
         line-height: 1.6;
         display: flex;
-        justify-content: center;
+        text-align: center;
     }
 
     h2 {
@@ -54,12 +53,18 @@ var Banner = styled.div`
         padding-left: 2rem;
         padding-right: 2rem;
         color: var(--fundo);
+        width: 90%;
     }
 
     .button {
-        display: inline-block;
         margin-top: 10px;
+        text-align: center;
     }
+
+    .button a {
+        text-decoration: none;
+    }
+
 
     @media(min-width: 768px) {
         display: grid;
@@ -74,7 +79,6 @@ var Banner = styled.div`
             align-self: start;
             margin-right: 50px;
             width: 450px;
-            
         }
 
         .message {
@@ -87,10 +91,19 @@ var Banner = styled.div`
             margin-top: 0;
         }
 
+        .button {
+            text-align: left;
+        }
+
+        .message button {
+            width: auto;
+        }
+
         h1 {
             font-size: 26px;
             width: 500px;
             justify-content: start;
+            text-align: left;
         }
 
         h2 {
@@ -106,10 +119,7 @@ export interface BannerProps {
     description?: string;
     buttonLink?: string;
     buttonText?: string;
-
 }
-
-
 
 const BannerWithButton: React.FC<BannerProps> = (props) => {
     return (
@@ -122,12 +132,12 @@ const BannerWithButton: React.FC<BannerProps> = (props) => {
             <div className="message">
                 <h1>{props.title}</h1>
                 {props.description && <h2>{props.description}</h2>}
-                {props.buttonLink && <div className="button">
+                {props.buttonLink && <div className="button">     
                     <Link to={props.buttonLink}>
-                    <button>
-                        {props.buttonText}
-                    </button>
-                    </Link>
+                        <button>
+                            {props.buttonText}
+                        </button>
+                    </Link>          
                 </div>}
             </div>
         </Banner>
