@@ -6,7 +6,8 @@ interface MenuIconProps {
 }
 
 const MenuIcon = styled.div`
-  display: none;
+  display: flex;
+  color: ${(props: MenuIconProps)  => props.open ? '#0C3197' : '#FFFFFF'};
   font-size: 2rem;
   height: 4rem;
   position: fixed;
@@ -14,10 +15,8 @@ const MenuIcon = styled.div`
   top: 10px;
   width: 4rem;
   z-index: 1;
-
-  @media (max-width: 768px) {
-    display: flex;
-    color: ${(props: MenuIconProps)  => props.open ? '#0C3197' : '#FFFFFF'};
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 export default MenuIcon;

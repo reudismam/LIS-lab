@@ -16,15 +16,6 @@ const MenuContainer = styled.div`
 `
 
 const Menus = styled.nav`
-  display: flex;
-  align-items: 'center';
-  justify-content: space-between;
-
-  li {
-    padding-right: 1.6rem;
-  }
-
-  @media (max-width: 768px) {
     background-color: var(--fundo);
     flex-direction: column;
     height: 100vh;
@@ -36,6 +27,15 @@ const Menus = styled.nav`
     transform: ${ (props: MenuIconProps) => props.open ? 'translateX(0)' : 'translateX(100%)'};
     transition: transform 0.3s;
     width: 200px;
+
+  li {
+    padding-right: 1.6rem;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: 'center';
+    justify-content: space-between;
   }
 `;
 
@@ -44,13 +44,15 @@ const Menu = () => {
   
   return (
     <MenuContainer>
+      {!open &&
       <MenuIcon open={open} onClick={() => setOpen(!open)}>
-        {!open && <FiMenu />}
-      </MenuIcon>
-
+        <FiMenu />
+      </MenuIcon>}
+      
+      {open &&
       <MenuIcon open={open} onClick={() => setOpen(!open)}>
-        {open && <RiCloseFill />}
-      </MenuIcon>
+        <RiCloseFill />
+      </MenuIcon>}
 
       <Menus open={open}>
         <MenuList>
@@ -76,3 +78,4 @@ const Menu = () => {
 }
 
 export default Menu
+
