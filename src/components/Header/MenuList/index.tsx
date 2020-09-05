@@ -10,7 +10,7 @@ const MenuList = styled.ul`
     li {
         color: var(--cinza);
         margin-bottom: 1rem;
-        font-size: 1.6rem;
+        font-size: 1.2rem;
     }
 
     @media(min-width: 768px) {
