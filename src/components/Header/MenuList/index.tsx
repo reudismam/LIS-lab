@@ -5,6 +5,7 @@ const MenuList = styled.ul`
     list-style: none;
     margin-left: 3rem;
     margin-top: 3rem;
+    font-family: 'Roboto', sans-serif;
 
     li {
         color: var(--cinza);
