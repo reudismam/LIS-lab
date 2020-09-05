@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
+interface MenuIconProps {
+    open: boolean;
+}
+
 const MenuIcon = styled.div`
     font-size: 2rem;
-    color: var(--branco);
+    color: ${(props: MenuIconProps) => props.open ? 'var(--cinza)' : 'var(--branco)' };
+    z-index: 1;
 
     @media (min-width: 768px) {
         display: none;
