@@ -44,15 +44,26 @@ const Menus = styled.nav`
 `
 
 export default function Menu() {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+
+    const OpenMenu = () => {
+        if (!open) {
+            return (
+                
+                    <MenuIcon open={open} onClick={() => setOpen(!open)}>
+                    <FiMenu />
+                    </MenuIcon>
+            )
+        }
+        else {
+            return null;
+        }
+    }
 
     return (
         <MenuContainer>
-            {!open &&
-            <MenuIcon open={open} onClick={() => setOpen(!open)}>
-            <FiMenu />
-            </MenuIcon>
-            }
+
+            <OpenMenu />            
 
             {open &&
             <MenuIcon open={open} onClick={() => setOpen(!open)}>
