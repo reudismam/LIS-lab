@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {FiMenu} from 'react-icons/fi';
+import {RiCloseFill} from 'react-icons/ri';
 import MenuIcon from '../MenuIcon';
 import MenuList from '../MenuList';
+
+interface MenuIconProps {
+    open?: boolean;
+}
 
 const MenuContainer = styled.div`
     margin-left: 1.6rem;
@@ -13,7 +18,7 @@ const MenuContainer = styled.div`
     & ${MenuIcon} {
         position: fixed;
         right: 20px;
-        top: 10px;
+        top: 20px;
     }
 `
 
@@ -24,8 +29,11 @@ const Menus = styled.nav`
     position: fixed;
     right: 0;
     top: 0;
+    transform: ${(props: MenuIconProps) => props.open ? 'translateX(0)' : 'translateX(100%)'};
+    transition: transform 0.3s;
 
     @media(min-width: 768px) {
+        transform: none;
         background-color: transparent;
         display: flex;
         position: static;
@@ -36,13 +44,23 @@ const Menus = styled.nav`
 `
 
 export default function Menu() {
+    const [open, setOpen] = useState(false)
+
     return (
         <MenuContainer>
-            <MenuIcon>
-                <FiMenu />
+            {!open &&
+            <MenuIcon open={open} onClick={() => setOpen(!open)}>
+            <FiMenu />
             </MenuIcon>
-            
-            <Menus>
+            }
+
+            {open &&
+            <MenuIcon open={open} onClick={() => setOpen(!open)}>
+            <RiCloseFill />
+            </MenuIcon>
+            }
+
+            <Menus open={open}>
                 <MenuList>
                     <li>Início</li>
                     <li>Pesquisadores</li>
