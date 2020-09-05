@@ -9,7 +9,8 @@ const MenuList = styled.ul`
     li {
         color: var(--cinza);
         margin-bottom: 1rem;
-        font-size: 1.6rem;
+        font-size: 1.2rem;
+        font-family: 'Roboto', sans-serif;
     }
 
     @media(min-width: 768px) {
