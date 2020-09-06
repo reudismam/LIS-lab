@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Img from '../../../assets/images/Home/inicio.svg';
 import BannerImg from '../BannerImg';
+import BannerMessage from '../BannerMessage';
 
 const BannerContainer = styled.div`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 `
 
 export default function Banner() {
@@ -15,6 +17,7 @@ export default function Banner() {
                 src={Img}
                 alt="Imagem da Home"
             />
+            <BannerMessage />
         </BannerContainer>
     );
 }
