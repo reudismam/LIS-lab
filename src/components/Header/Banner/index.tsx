@@ -26,14 +26,27 @@ const BannerContainer = styled.div`
     }
 `
 
-export default function Banner() {
+export interface BannerProps {
+    imageSrc?: string;
+    imageAlt?: string;
+    title: string;
+    description?: string;
+    buttonLink?: string;
+    buttonText?: string;
+}
+
+const Banner: React.FC<BannerProps> = (props) => {
     return (
         <BannerContainer>
+            {props.imageSrc &&
             <BannerImg
-                src={Img}
-                alt="Imagem da Home"
+                src={props.imageSrc}
+                alt={props.imageAlt}
             />
-            <BannerMessage />
+            }
+            <BannerMessage {...props}/>
         </BannerContainer>
     );
 }
+
+export default Banner;
