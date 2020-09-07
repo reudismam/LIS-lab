@@ -6,7 +6,7 @@ export default function Editais() {
     return (
         <PageTemplate
             imageSrc={editaisImg}
-            imageAlt="Imagem editais"
+            imageAlt="Editais"
             title="Editais"
             description="Acompanhe nossa postagens e fique por dentro do que
             rola aqui no LIS, e claro que tem aquele toque de aprendizagem!"

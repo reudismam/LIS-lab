@@ -56,10 +56,10 @@ const Message: React.FC<BannerProps> = (props) => {
             <Title>
                 {props.title}
             </Title>
-            
+
             {props.description &&
             <Description>
-               {props.description}
+                {props.description}
             </Description>
             }
 
