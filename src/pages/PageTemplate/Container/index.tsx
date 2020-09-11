@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Page from '../Page';
 
 const PageContainer = styled.main`
-    background-color: tomato;
     width: 90%;
 `
 
