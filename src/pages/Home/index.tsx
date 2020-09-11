@@ -1,6 +1,7 @@
 import React from 'react';
 import PageTemplate from '../PageTemplate';
 import homeImg from '../../assets/images/Home/inicio.svg';
+import Projetos from '../../components/Projetos';
 
 export default function Home() {
     return (
@@ -11,7 +12,7 @@ export default function Home() {
             buttonLink="/projetos"
             buttonText="Projetos"
         >
-            <h1>Home</h1>
+            <Projetos />
         </PageTemplate>
     );
 }

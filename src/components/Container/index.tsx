@@ -4,7 +4,6 @@ import Page from '../Page';
 
 const PageContainer = styled.main`
     width: 90%;
-    background-color: tomato;
 `
 
 const Container: React.FC = (props) => {
