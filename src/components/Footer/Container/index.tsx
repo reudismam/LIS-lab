@@ -4,6 +4,11 @@ import FooterContent from '../Content';
 
 const FooterContainer = styled.footer`
     background-color: var(--fundo);
+
+    @media(min-width: 768px) {
+        display: flex;
+        justify-content: center;
+    }
 `
 
 
