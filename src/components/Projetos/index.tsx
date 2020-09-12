@@ -8,6 +8,7 @@ const ProjetList = styled.section`
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
     line-height: 1.6;
+    
 `
 
 const ProjetoName = styled.h2`
