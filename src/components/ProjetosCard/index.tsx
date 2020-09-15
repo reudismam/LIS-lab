@@ -6,6 +6,8 @@ const Card = styled.article`
 
     @media(min-width: 768px) {
         width: 47%;
+        border: 1px solid #d4d4d4;
+        border-radius: 0.8rem;
     }
 `
 
