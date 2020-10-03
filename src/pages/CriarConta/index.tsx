@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import PageTemplate from '../PageTemplate';
 import criarContaImg from '../../assets/images/CriarConta/criarConta.svg';
 import Input from '../../components/Input';
+import Select from '../../components/Select';
+import TextArea from '../../components/TextArea';
 
 const Form = styled.form`
     font-family: 'Roboto', sans-serif;
@@ -35,6 +37,18 @@ const Name = styled.div`
 
 `
 
+const Contato = styled.div`
+
+`
+
+const Property = styled.div`
+
+`
+
+const categoria = ['Discente', 'Docente'];
+const funcao = ['Membro', 'Líder'];
+const titulacao = ['Graduando', 'Graduado', 'Mestrado', 'Doutorado'];
+
 export default function CriarConta() {
     return (
         <PageTemplate
@@ -54,10 +68,44 @@ export default function CriarConta() {
                         </Photo>
 
                         <Name>
-                            <Input name="name" label="Nome"/>
-                            <Input name="lastname" label="Sobrenome"/>
+                            <Input type="text" name="name" label="Nome"/>
+                            <Input type="text" name="lastname" label="Sobrenome"/>
                         </Name>
                     </NameContainer>
+
+                    <Contato>
+                            <Input 
+                                type="email" 
+                                name="email" 
+                                label="Email"
+                                placeholder="example@email.com" />
+                            <Input 
+                                type="number"
+                                name="phone"
+                                label="Telefone" />
+                    </Contato>
+                    <Input 
+                        type="text"
+                        name="course"
+                        label="Curso"
+                        />
+                    <Property>
+                        <Select 
+                            name="category"
+                            label="Categoria (docente, discente)"
+                            options={categoria}
+                        />
+                        <Select 
+                            name="occupation"
+                            label="Função (membro, líder)"
+                            options={funcao}/>
+                        <Select 
+                            name="degree"
+                            label="Titulação (graduando, mestre)"
+                            options={titulacao}
+                            />
+                    </Property>
+                    <TextArea name="bio" label="Bio (max  300 caracteres)"/>
                 </FieldSet>
             </Form>
         </PageTemplate>
