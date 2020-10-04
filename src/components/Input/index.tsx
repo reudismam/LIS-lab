@@ -1,26 +1,17 @@
 import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
+import {ContainerStyles, InputStyles, LabelStyles} from '../InputStyles';
 
 const InputContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0;
+    ${ContainerStyles}
 `
 
 const Label = styled.label`
-    font-size: 1.6rem;
-    color: var(--cinza);
-    margin-bottom: 10px;
-
+    ${LabelStyles}
 `
 
 const InputBox = styled.input`
-    height: 6rem;
-    border: 1px solid var(--bordas);
-    border-radius: 0.8rem;
-    padding-left: 20px;
-    color: var(--cinza);
-
+    ${InputStyles}
 `
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -28,7 +19,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
 }
 
-const Input: React.FC<InputProps> = ({name, label, ... rest}) => {
+const Input: React.FC<InputProps> = ({name, label, ...rest}) => {
     return (
         <InputContainer>
             <Label htmlFor={name}>{label}</Label>
