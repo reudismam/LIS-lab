@@ -4,6 +4,7 @@ import PageTemplate from '../PageTemplate';
 import criarContaImg from '../../assets/images/CriarConta/criarConta.svg';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
+import TextArea from '../../components/TextArea';
 
 const categoria = ['Discente', 'Docente']
 const funcao = ['Membro', 'Líder']
@@ -101,6 +102,7 @@ export default function CriarConta() {
                             options={titulacao} 
                         />
                     </Property>
+                    <TextArea name="bio" label=" Bio (max  300 caracteres)"/>
                 </FieldSet>
             </Form>
         </PageTemplate>
