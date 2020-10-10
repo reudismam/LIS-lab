@@ -1,0 +1,4 @@
+[1010/161920.407:ERROR:file_io.cc(90)] ReadExactly: expected 224, observed 0
+[1010/161920.408:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1010/164509.284:ERROR:file_io.cc(90)] ReadExactly: expected 224, observed 0
+[1010/164509.285:ERROR:crash_report_database_win.cc(476)] failed to read records

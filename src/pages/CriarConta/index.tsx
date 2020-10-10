@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import styled from 'styled-components';
 import PageTemplate from '../PageTemplate';
 import criarContaImg from '../../assets/images/CriarConta/criarConta.svg';
@@ -9,6 +9,8 @@ import TextArea from '../../components/TextArea';
 const categoria = ['Discente', 'Docente']
 const funcao = ['Membro', 'Líder']
 const titulacao = ['Graduando', 'Graduado', 'Mestrado', 'Doutorado']
+
+const areasInteresse = ['']
 
 const Form = styled.form`
     font-family: 'Roboto', sans-serif;
@@ -47,7 +49,25 @@ const Property = styled.div`
 
 `
 
+const TopFieldSet = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+const PlusButton = styled.button`
+    background-color: var(--branco);
+    border: none;
+    color: var(--secundaria);
+    font-size: 1.6rem;
+    font-weight: bold;
+`
+
 export default function CriarConta() {
+
+    function AddNewInterestArea(e: FormEvent) {
+        e.preventDefault();
+    }
+
     return (
         <PageTemplate
             imageSrc={criarContaImg}
@@ -103,6 +123,21 @@ export default function CriarConta() {
                         />
                     </Property>
                     <TextArea name="bio" label=" Bio (max  300 caracteres)"/>
+                </FieldSet>
+                <FieldSet>
+                    <TopFieldSet>
+                        <Legend>
+                            Áreas de Interesse
+                        </Legend>
+                        <PlusButton onClick={AddNewInterestArea}>+Áreas</PlusButton>
+                    </TopFieldSet>
+                    {
+                        areasInteresse.map((area, index) => {
+                            return (
+                                <Input key={area} name={area} label="Área de Interesse" />
+                            );
+                        })
+                    }
                 </FieldSet>
             </Form>
         </PageTemplate>
