@@ -47,6 +47,19 @@ const Property = styled.div`
 
 `
 
+const TopFieldSet = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+const PlusButton = styled.button`
+    border: none;
+    background-color: var(--branco);
+    color: var(--secundaria);
+    font-size: 1.6rem;
+    font-weight: bold;
+`
+
 export default function CriarConta() {
     return (
         <PageTemplate
@@ -103,6 +116,15 @@ export default function CriarConta() {
                         />
                     </Property>
                     <TextArea name="bio" label=" Bio (max  300 caracteres)"/>
+                </FieldSet>
+                <FieldSet>
+                    <TopFieldSet>
+                        <Legend>
+                            Áreas de Interesse
+                        </Legend>
+                        <PlusButton>+Área</PlusButton>
+                    </TopFieldSet>
+                    <Input name="area" label="Área de Interesse"/>
                 </FieldSet>
             </Form>
         </PageTemplate>
