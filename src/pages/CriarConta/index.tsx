@@ -60,6 +60,10 @@ const PlusButton = styled.button`
     font-weight: bold;
 `
 
+const TitleContainer = styled.div`
+
+`
+
 export default function CriarConta() {
     return (
         <PageTemplate
@@ -125,6 +129,19 @@ export default function CriarConta() {
                         <PlusButton>+Área</PlusButton>
                     </TopFieldSet>
                     <Input name="area" label="Área de Interesse"/>
+                </FieldSet>
+                <FieldSet>
+                    <TopFieldSet>
+                        <Legend>
+                            Publicações
+                        </Legend>
+                        <PlusButton>+Publicações</PlusButton>
+                    </TopFieldSet>
+                    <TitleContainer>
+                        <Input name="publication_tile" label="Título"/>
+                        <Input name="publication_year" label="Ano" />                    
+                    </TitleContainer>
+                    <TextArea name="publication_reference" label="Referência ABNT (max. 300 caracteres)"/>
                 </FieldSet>
             </Form>
         </PageTemplate>
