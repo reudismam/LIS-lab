@@ -2,11 +2,11 @@ import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { ContainerStyles, InputStyles, LabelStyles } from '../InputStyles';
 
-const SelectContainer = styled.div`
+export const SelectContainer = styled.div`
     ${ContainerStyles}
 `
 
-const Label = styled.label`
+export const Label = styled.label`
     ${LabelStyles}
 `
 
