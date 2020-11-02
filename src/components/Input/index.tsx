@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import {ContainerStyles, InputStyles, LabelStyles} from '../InputStyles';
 
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
     ${ContainerStyles}
 `
 
