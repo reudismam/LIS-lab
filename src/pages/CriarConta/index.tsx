@@ -113,7 +113,7 @@ const PlusButton = styled.button`
 `
 
 const TitleContainer = styled.div`
-@media(min-width: 768px) {
+    @media(min-width: 768px) {
         display: flex;
         width: 100%;
 
@@ -125,6 +125,7 @@ const TitleContainer = styled.div`
             width: 30%;
             margin-left: 10px;
         }
+    }
 `
 
 const PublicationContainer = styled.div`
