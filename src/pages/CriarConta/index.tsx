@@ -6,6 +6,7 @@ import Input, {InputContainer} from '../../components/Input';
 import Select, {SelectContainer} from '../../components/Select';
 import TextArea from '../../components/TextArea';
 import SubmitButton from '../../components/SubmitButton';
+import Conection from '../../services/conection';
 
 const categoria = ['Discente', 'Docente']
 const funcao = ['Membro', 'Líder']
@@ -193,7 +194,8 @@ export default function CriarConta() {
 
     function handleSubmit(e: FormEvent) {
             e.preventDefault();
-            console.log({
+            const path = category === 'Discente' ? '/discentes' : '/docentes';
+            Conection.post(path, {
                 name, 
                 lastname,
                 email,
@@ -205,6 +207,12 @@ export default function CriarConta() {
                 bio,
                 areas,
                 publications
+            })
+            .then((response) => {
+                alert("Cadastro realizado com sucesso!!!");
+            })
+            .catch((error) => {
+                alert(error);
             });
     }
 

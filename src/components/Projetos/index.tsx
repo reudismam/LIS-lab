@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import {PROJETOS} from '../../data/projetos';
 import Card from '../ProjetosCard';
+import Conexao from '../../services/conection';
 
 const ProjetList = styled.section`
     margin-top: 20px;
@@ -31,11 +31,31 @@ const Image = styled.img`
 
 `
 
+interface Project {
+    name: string,
+    image: string,
+    situation: string,
+    featured: boolean,
+    description: string,
+}
+
 export default function Projetos() {
+    const [projetos, setProjetos] = useState<Project[]>([]);
+
+    useEffect(() => {
+        Conexao.get("/projetos")
+        .then((response) => {
+            setProjetos(response.data);
+        })
+        .catch((error) => {
+            alert(error);
+        });
+    }, []);
+
     return (
         <ProjetList>
             {
-                PROJETOS.filter(p => p.featured === true).map((projeto) => {
+                projetos.filter(p => p.featured === true).map((projeto) => {
                     return (
                         <Card key={projeto.name}>
                             <Image src={require(`../../assets/${projeto.image}`)} alt={projeto.name} />
