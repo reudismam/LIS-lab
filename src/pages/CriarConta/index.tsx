@@ -15,8 +15,8 @@ const Form = styled.form`
     font-family: 'Roboto', sans-serif;
     margin: 50px auto;
     width: 90%;
-    min-width: 768px;
     @media(min-width: 768px) {
+        min-width: 768px;
         border: 1px solid var(--bordas);
         padding: 50px;
         border-radius: 0.8rem;
@@ -24,8 +24,17 @@ const Form = styled.form`
     }
 `
 
+const PublicationContainer = styled.div`
+`
+
 const FieldSet = styled.fieldset`
     border: none;
+
+    ${PublicationContainer} + ${PublicationContainer} {
+        border-top: 1px solid var(--bordas);
+        margin-top: 50px;
+        padding-top: 50px;
+    }
 `
 
 const Legend = styled.legend`
@@ -130,9 +139,6 @@ const TitleContainer = styled.div`
     }
 `
 
-const PublicationContainer = styled.div`
-`
-
 interface Publication {
     title: string,
     year: string,
@@ -200,6 +206,22 @@ export default function CriarConta() {
                 areas,
                 publications
             });
+    }
+
+    function addAreaInteresse(e: FormEvent) {
+        e.preventDefault();
+        const areasAtualizadas = [...areas, ''];
+        setAreas(areasAtualizadas);
+    }
+
+    function addPublication(e: FormEvent) {
+        e.preventDefault();
+        const publicationsAtualizadas = [...publications, {
+            title: '',
+            year: '',
+            reference: ''
+        }]
+        setPublications(publicationsAtualizadas);
     }
 
     return (
@@ -287,7 +309,7 @@ export default function CriarConta() {
                         <Legend>
                             Áreas de Interesse
                         </Legend>
-                        <PlusButton>+Área</PlusButton>
+                        <PlusButton onClick={addAreaInteresse}>+Área</PlusButton>
                     </TopFieldSet>
                     {
                         areas.map((area, index) => {
@@ -306,7 +328,7 @@ export default function CriarConta() {
                         <Legend>
                             Publicações
                         </Legend>
-                        <PlusButton>+Publicações</PlusButton>
+                        <PlusButton onClick={addPublication}>+Publicações</PlusButton>
                     </TopFieldSet>
                     {
                         publications.map((publication, index) => {
