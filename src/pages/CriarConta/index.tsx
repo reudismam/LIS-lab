@@ -1,4 +1,4 @@
-import React, {FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useState} from 'react';
 import styled from 'styled-components';
 import PageTemplate from '../PageTemplate';
 import criarContaImg from '../../assets/images/CriarConta/criarConta.svg';
@@ -7,6 +7,7 @@ import Select, {SelectContainer} from '../../components/Select';
 import TextArea from '../../components/TextArea';
 import SubmitButton from '../../components/SubmitButton';
 import Conection from '../../services/conection';
+import {MdAddAPhoto} from 'react-icons/md';
 
 const categoria = ['Discente', 'Docente']
 const funcao = ['Membro', 'Líder']
@@ -49,12 +50,18 @@ const NameContainer = styled.div`
     }
 `
 
-const Photo = styled.div`
+const Photo = styled.label`
+    position: relative;
     width: 150px;
     height: 150px;
     background-color: var(--bordas);
     border-radius: 50%;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--cinza);
 
     @media(min-width: 768px) {
         flex-shrink: 0;
@@ -140,6 +147,18 @@ const TitleContainer = styled.div`
     }
 `
 
+const PhotoIcon = styled(MdAddAPhoto)`
+    position: absolute;
+    z-index: 1;
+    opacity: 0.5;
+`
+
+const PhotoPreview = styled.img`
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+`
+
 interface Publication {
     title: string,
     year: string,
@@ -162,6 +181,8 @@ export default function CriarConta() {
         year: '',
         reference: ''
     }]);
+    const [photo, setPhoto] = useState<string>();
+    const [photoImage, setPhotoImage] = useState<File>();
 
     function setAreaInteresse(position: number, value: string) {
         const areasAtualizadas = areas.map((area, index) => {
@@ -194,20 +215,25 @@ export default function CriarConta() {
 
     function handleSubmit(e: FormEvent) {
             e.preventDefault();
-            const path = category === 'Discente' ? '/discentes' : '/docentes';
-            Conection.post(path, {
-                name, 
-                lastname,
-                email,
-                phone,
-                course,
-                category,
-                occupation,
-                degree,
-                bio,
-                areas,
-                publications
-            })
+            const path = category === 'Discente' ? '/discent' : '/docent';
+            const data = new FormData();
+            data.append('name', name);
+            data.append('lastname', lastname);
+            data.append('email', email);
+            data.append('phone', phone);
+            data.append('course', course);
+            data.append('category', category);
+            data.append('occupation', occupation);
+            data.append('degree', degree);
+            data.append('bio', bio);
+
+            data.append('areas', JSON.stringify(areas));
+
+            data.append('publications', JSON.stringify(publications));
+
+            data.append('photo', (photoImage as File));
+
+            Conection.post(path, data)
             .then((response) => {
                 alert("Cadastro realizado com sucesso!!!");
             })
@@ -232,6 +258,14 @@ export default function CriarConta() {
         setPublications(publicationsAtualizadas);
     }
 
+    function handleSelectedPhoto(e: ChangeEvent<HTMLInputElement>) {
+        if (e.target.files) {
+            const image = e.target.files.item(0) as File;
+            setPhotoImage(image);
+            setPhoto(URL.createObjectURL(image));
+        }
+    }
+
     return (
         <PageTemplate
             imageSrc={criarContaImg}
@@ -246,8 +280,20 @@ export default function CriarConta() {
                     </Legend>
 
                     <NameContainer>
-                        <Photo>
+                        <Photo htmlFor="photo">
+                            <PhotoIcon />
+                            {photo && <PhotoPreview src={photo} alt="Foto de perfil" />}
                         </Photo>
+
+                        <input 
+                            type="file"
+                            id="photo"
+                            name="photo"
+                            onChange={handleSelectedPhoto}
+                            accept="image/*"
+                            hidden
+                        />
+                        
 
                         <Name>
                             <Input 
